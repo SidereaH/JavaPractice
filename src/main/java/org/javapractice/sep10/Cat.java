@@ -48,7 +48,7 @@ public class Cat {
     @Override
     public String toString(){
         return String.format("""
-                Id: %d,
+                \nId: %d,
                 Имя: %s,
                 Возраст: %d.
                 """, getId(),  getName(), getAge() );

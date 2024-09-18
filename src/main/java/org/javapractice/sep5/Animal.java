@@ -53,9 +53,9 @@ public class Animal implements AnimalTemp {
     @Override
     public String toString(){
         return String.format("""
-                Cat name is: %s;
-                Cat age is: %d;
-                Cats counted:%d.
+                Animal name is: %s;
+                Animal age is: %d;
+                Animals counted:%d.
                 """, name, age, count);
     }
 }

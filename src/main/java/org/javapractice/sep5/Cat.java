@@ -11,7 +11,7 @@ public class Cat extends Animal {
      * Конструктор кота
      * @param name Имя кота
      * @param age Возраст кота
-     * @param owner Хохяин кота
+     * @param owner Хозяин кота
      */
     public Cat(String name, int age, String owner){
         super(name, age);

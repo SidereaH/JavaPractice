@@ -61,7 +61,6 @@ public class Main {
         new Thread(cycles).start();
 
 
-
     }
 
 }
