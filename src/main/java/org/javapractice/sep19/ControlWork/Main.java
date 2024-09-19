@@ -103,7 +103,7 @@ public class Main {
                 }
             }
         }
-
+        System.out.println("Таблица умножения");
 //      2)Создать Java-приложение, которое выводит таблицу умножения для указанного пользователем числа.
         String number;
         boolean isCorrect;
@@ -120,21 +120,24 @@ public class Main {
         }
 //        Задание 3
 //        Создать Java-приложение, которое реализует поиск заданного пользователем символа в заданной пользователем строке
+        System.out.println("Поиск подстроки");
         System.out.println("Введите строку");
         var in = new Scanner(System.in);
         String string = in.nextLine();
         System.out.println("Введите символ");
         String search = in.nextLine();
-        if (search.contains(string)){
-            System.out.println("Такого нет");
+        if (string.contains(search)){
+            System.out.println("Найдено на следующей позиции");
+            System.out.println(string.indexOf(search));
         }
         else{
-            System.out.println("Найдено");
-            System.out.println(string.indexOf(search));
+            System.out.println("Такого нет");
         }
 //        Задание 4
 //        Создать Java-приложение, которое по номеру дня недели выводит его название
+        System.out.println("День недели");
         String dayOfWeek;
+        isCorrect = false;
         do {
             System.out.println("Введите номер дня недели");
             Scanner scanner = new Scanner(System.in);
@@ -142,24 +145,32 @@ public class Main {
             isCorrect = check(dayOfWeek);
         } while (!isCorrect);
         int day = Integer.parseInt(dayOfWeek);
+        System.out.println(day);
         switch (day){
             case 1:
                 System.out.println("Monday");
                 break;
             case 2:
                 System.out.println("Tuesday");
+                break;
             case 3:
                 System.out.println("Wednesday");
+                break;
             case 4:
                 System.out.println("Thursday");
+                break;
             case 5:
                 System.out.println("Friday");
+                break;
             case 6:
                 System.out.println("Saturday");
+                break;
             case 7:
                 System.out.println("Sunday");
+                break;
             default:
                 System.out.println("Нет такого дня");
+                break;
         }
     }
     static double factorial(double a){
@@ -170,32 +181,32 @@ public class Main {
         return result;
     }
     public static boolean check(String integer) {
-        Pattern p = Pattern.compile("^[0-9]{1,9}$");
+        Pattern p = Pattern.compile("^[0-9]*[.]?[0-9]+$");
         Matcher m = p.matcher(integer);
         return m.matches();
     }
-    static int sum(int a, int b){
+    static double sum(int a, int b){
         return a + b;
     }
-    static int sum(double a, double b){
-        return (int) (a + b);
+    static double sum(double a, double b){
+        return (a + b);
     }
-    static int minus(int a, int b){
+    static double minus(int a, int b){
         return a - b;
     }
-    static int minus(double a, double b){
-        return (int) (a - b);
+    static double minus(double a, double b){
+        return (double) (a - b);
     }
-    static int divide(int a, int b){
-        return a / b;
+    static double divide(int a, int b){
+        return (double) a / b;
     }
-    static int divide(double a, double b){
-        return (int) (a / b);
+    static double divide(double a, double b){
+        return (a / b);
     }
-    static int multiply(int a, int b){
+    static double multiply(int a, int b){
         return a * b;
     }
-    static int multiply(double a, double b){
-        return (int) (a * b);
+    static double multiply(double a, double b){
+        return (a * b);
     }
 }
