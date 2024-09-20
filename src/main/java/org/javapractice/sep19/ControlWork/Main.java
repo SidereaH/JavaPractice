@@ -114,10 +114,35 @@ public class Main {
             isCorrect = check(number);
         } while (!isCorrect);
         int num = Integer.parseInt(number);
-        for (int i = 1; i <= 9; i++){
-            int answer = i*num;
-            System.out.printf("%d * %d = %d\n",num , i, answer);
+        String[][] table = new String[9][num];
+//        for(int j = 1; j <= num; j++){
+//            StringBuilder column = new StringBuilder();
+//            for (int i = 1; i < 10; i++){
+//                int answer = i * j;
+////                System.out.printf("%d * %d = %d    ",j , i, answer);
+//                column.append(String.format("%d * %d = %d    \n",j , i, answer));
+//
+//            }
+//            System.out.println(String.valueOf(column));
+//            table[j-1] = String.valueOf(column);
+//        }
+//
+//        System.out.println("arr");
+//        System.out.println(Arrays.toString(table));
+        for(int i = 1; i <= table.length; i++){
+            for ( int j = 1; j <= table[i-1].length; j++){
+                int answer = i * j;
+//                System.out.printf("%d * %d = %d    ",j , i, answer);
+                String line = String.format("%d * %d = %d",j , i, answer);
+                table[i-1][j-1] = line;
+            }
         }
+        System.out.println("arr");
+
+        printTable(table);
+
+
+
 //        Задание 3
 //        Создать Java-приложение, которое реализует поиск заданного пользователем символа в заданной пользователем строке
         System.out.println("Поиск подстроки");
@@ -126,7 +151,7 @@ public class Main {
         String string = in.nextLine();
         System.out.println("Введите символ");
         String search = in.nextLine();
-        if (string.contains(search)){
+        if (string.toLowerCase().contains(search.toLowerCase())){
             System.out.println("Найдено на следующей позиции");
             System.out.println(string.indexOf(search));
         }
@@ -145,7 +170,6 @@ public class Main {
             isCorrect = check(dayOfWeek);
         } while (!isCorrect);
         int day = Integer.parseInt(dayOfWeek);
-        System.out.println(day);
         switch (day){
             case 1:
                 System.out.println("Monday");
@@ -209,4 +233,18 @@ public class Main {
     static double multiply(double a, double b){
         return (a * b);
     }
+    static void printTable(String[][] array){
+        for (int i = 0; i < array.length; i++){
+            for (int k = 0; k < array[i].length; k++){
+                StringBuilder line = new StringBuilder();
+                line.append(array[i][k]);
+                while(line.length() != 15){
+                    line.insert(line.length(), " ");
+                }
+                System.out.print(line);
+            }
+            System.out.println();
+        }
+    }
+
 }
