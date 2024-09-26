@@ -1,6 +1,5 @@
 package org.javapractice.sep20;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -74,7 +73,6 @@ public class WorksSalary {
                 }
                 j1++;
             }
-
             if (i1 == 10){
                 j1 = 0;
                 while(j1 <= 20){
@@ -90,12 +88,8 @@ public class WorksSalary {
             else{
                 System.out.println(inside);
             }
-
-
             i1++;
         }
-
-
     }
      static boolean canLeave(int a, int b, int c){
         if (a+b > c || a+c > b || b+c > b){
@@ -112,7 +106,6 @@ public class WorksSalary {
         for (int i = 0; i < sArr.length; i++){
             resultArr[i + fArr.length ] = sArr[i];
         }
-
         return resultArr;
     }
 }
