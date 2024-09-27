@@ -62,7 +62,13 @@ public class TaskManager {
     public int getCount(){
         return count;
     }
-
+    public String searchById(int id){
+        for (ReccuringTask task : reccuringTasks){
+            if (task.getId() == id){
+                return "reccuring";
+            }
+        }
+    }
     @Override
     public String toString() {
         return "TaskManager{" +

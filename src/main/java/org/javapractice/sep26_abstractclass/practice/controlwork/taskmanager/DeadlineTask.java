@@ -1,18 +1,27 @@
 package org.javapractice.sep26_abstractclass.practice.controlwork.taskmanager;
 
-public class DeadlineTask extends Task{
-    private String deadlineDate;
+import java.time.LocalDate;
 
-    public DeadlineTask(String taskName, String taskDescription, String dateOFCreate, String deadlineDate) {
+public class DeadlineTask extends Task{
+    private LocalDate deadlineDate;
+
+    public DeadlineTask(String taskName, String taskDescription, LocalDate dateOFCreate, LocalDate deadlineDate) {
         super(taskName, taskDescription, dateOFCreate);
         this.deadlineDate = deadlineDate;
     }
 
     public String getDeadlineDate() {
-        return deadlineDate;
+        return String.valueOf(deadlineDate);
     }
 
-    public void setDeadlineDate(String deadlineDate) {
+    public void setDeadlineDate(LocalDate deadlineDate) {
         this.deadlineDate = deadlineDate;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+"DeadlineTask{" +
+                "deadlineDate=" + deadlineDate +
+                '}';
     }
 }

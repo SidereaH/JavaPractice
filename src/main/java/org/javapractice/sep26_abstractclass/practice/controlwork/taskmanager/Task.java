@@ -1,16 +1,23 @@
 package org.javapractice.sep26_abstractclass.practice.controlwork.taskmanager;
 
+import java.time.LocalDate;
+
 public class Task {
     private String taskName;
     private String taskDescription;
-    private String dateOFCreate;
-
-    public Task(String taskName, String taskDescription, String dateOFCreate) {
+    private LocalDate dateOFCreate;
+    private static int count = 0;
+    private int id;
+    public Task(String taskName, String taskDescription, LocalDate dateOFCreate) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.dateOFCreate = dateOFCreate;
+        this.id = count;
+        count++;
     }
-
+    public int getId(){
+           return id;
+    }
     public String getTaskName() {
         return taskName;
     }
@@ -28,20 +35,20 @@ public class Task {
     }
 
     public String getDateOFCreate() {
-        return dateOFCreate;
+        return String.valueOf(dateOFCreate);
     }
 
-    public void setDateOFCreate(String dateOFCreate) {
+    public void setDateOFCreate(LocalDate dateOFCreate) {
         this.dateOFCreate = dateOFCreate;
     }
 
     @Override
     public String toString() {
         return "Task{" +
-                "taskName='" + taskName + '\'' +
+                "id=" + id +
+                ", taskName='" + taskName + '\'' +
                 ", taskDescription='" + taskDescription + '\'' +
-                ", dateOFCreate='" + dateOFCreate + '\'' +
+                ", dateOFCreate=" + dateOFCreate +
                 '}';
     }
-
 }
