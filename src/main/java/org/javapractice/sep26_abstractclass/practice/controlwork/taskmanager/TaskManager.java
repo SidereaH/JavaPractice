@@ -65,9 +65,28 @@ public class TaskManager {
     public String searchById(int id){
         for (ReccuringTask task : reccuringTasks){
             if (task.getId() == id){
-                return "reccuring";
+                return "reoccurring";
             }
         }
+        for (DeadlineTask task : deadlineTasks){
+            if (task.getId() == id){
+                return "deadline";
+            }
+        }
+        return null;
+    }
+    public Task getTaskById(int id){
+        for (ReccuringTask task : reccuringTasks){
+            if (task.getId() == id){
+                return task;
+            }
+        }
+        for (DeadlineTask task : deadlineTasks){
+            if (task.getId() == id){
+                return task;
+            }
+        }
+        return null;
     }
     @Override
     public String toString() {

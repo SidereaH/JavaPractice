@@ -71,30 +71,99 @@ public class Main {
         String editTask = null;
 
         do {
-            System.out.println("Изменить существующую задачу? да/нет");
-            editTask = in.nextLine();
-        }while (!editTask.equals("да") && !editTask.equals("нет"));
-
-        if (editTask.equals("да")){
-            System.out.println(manager);
-
-            int id = -1;
             do {
-                System.out.println("Введите id задачи для изменения");
-                String idstr =  in.nextLine();
-
-            }while(id < 0 && id >= manager.getCount());
-
-            String param = null;
-            if ()
-            do{
-                System.out.println("Введите поле для изменения: ");
-                param = in.nextLine();
-            }while(!param.equals("taskName") && !param.equals("taskDescription") && !param.equals("dateOFCreate") && !param.equals("taskName") &&);
-
-        }
+                System.out.println("Изменить существующую задачу? да/нет");
+                editTask = in.nextLine();
+            }while (!editTask.equalsIgnoreCase("да") && !editTask.equalsIgnoreCase("нет"));
 
 
+            if (editTask.equals("да")){
+                System.out.println(manager);
 
+                int id = -1;
+                do {
+                    System.out.println("Введите id задачи для изменения");
+                    String idstr =  in.nextLine();
+                    id = Integer.parseInt(idstr);
+                } while(id < 0 && id >= manager.getCount());
+
+                String param = null;
+
+                if (manager.searchById(id).equals("reoccurring")){
+                    ReccuringTask taskForChange = (ReccuringTask) manager.getTaskById(id);
+                    do{
+                        System.out.println("Введите поле для изменения: ");
+                        param = in.nextLine();
+                    }while(!param.equalsIgnoreCase("taskName") && !param.equalsIgnoreCase("taskDescription") && !param.equalsIgnoreCase("intervalOfTask") && !param.equalsIgnoreCase("dateOfStart"));
+                    if (param.equals("taskName")){
+                        System.out.println("Введите новое название:");
+                        String newTaskName = in.nextLine();
+                        taskForChange.setTaskName(newTaskName);
+                    }
+                    else if (param.equals("taskDescription")){
+                        System.out.println("Введите новое описание:");
+                        String newTaskDescription = in.nextLine();
+                        taskForChange.setTaskDescription(newTaskDescription);
+                    }
+                    else if (param.equals("intervalOfTask")){
+                        System.out.println("Выберите новый интервал:");
+                        String newTypeOfRegularity = null;
+                        do{
+                            System.out.println("Выберите повторяемость: ежедневно - 1, еженедельно - 2, ежемесячно - 3, ежегодно - 4;");
+                            newTypeOfRegularity = in.nextLine();
+                        }while(!newTypeOfRegularity.equals("1")&&  !newTypeOfRegularity.equals("2") &&  !newTypeOfRegularity.equals("3") && !newTypeOfRegularity.equals("4"));
+                        newTypeOfRegularity = switch (newTypeOfRegularity) {
+                            case "1" -> Regularity.PERDAY;
+                            case "2" -> Regularity.PERWEEK;
+                            case "3" -> Regularity.PERMONTH;
+                            case "4" -> Regularity.PERYEAR;
+                            default -> newTypeOfRegularity;
+                        };
+                        taskForChange.setIntervalOfTask(newTypeOfRegularity);
+                    }
+                    else {
+                        String newDateOfStart = null;
+                        do{
+                            System.out.println("Введите дату начала в формате: yyyy-mm-yy");
+                            newDateOfStart = in.nextLine();
+                        }while (!isValidDate(newDateOfStart));
+                        taskForChange.setDateOfStart(LocalDate.parse(newDateOfStart));
+                    }
+                }
+                else {
+                    do{
+                        System.out.println("Введите поле для изменения: ");
+                        param = in.nextLine();
+                    }while(!param.equalsIgnoreCase("taskName") && !param.equalsIgnoreCase("taskDescription") && !param.equalsIgnoreCase("dateOFCreate") && !param.equalsIgnoreCase("deadlineDate") );
+                    DeadlineTask taskForChange = (DeadlineTask) manager.getTaskById(id);
+                    do{
+                        System.out.println("Введите поле для изменения: ");
+                        param = in.nextLine();
+                    }while(!param.equalsIgnoreCase("taskName") && !param.equalsIgnoreCase("taskDescription") && !param.equalsIgnoreCase("intervalOfTask") && !param.equalsIgnoreCase("dateOfStart") && !param.equalsIgnoreCase("deadlineDate") );
+                    if (param.equals("taskName")){
+                        System.out.println("Введите новое название:");
+                        String newTaskName = in.nextLine();
+                        taskForChange.setTaskName(newTaskName);
+                    }
+                    else if (param.equals("taskDescription")){
+                        System.out.println("Введите новое описание:");
+                        String newTaskDescription = in.nextLine();
+                        taskForChange.setTaskDescription(newTaskDescription);
+                    }
+                    else if (param.equalsIgnoreCase("deadlineDate")){
+                        String newDeadlineDate = null;
+                        do{
+                            System.out.println("Введите дату начала в формате: yyyy-mm-yy");
+                            newDeadlineDate = in.nextLine();
+                        }while (!isValidDate(newDeadlineDate));
+                        taskForChange.setDeadlineDate(LocalDate.parse(newDeadlineDate));
+                    }
+                }
+            }
+            else {
+                return;
+            }
+        }while (editTask.equalsIgnoreCase("да"));
+        System.out.println(manager);
     }
 }
