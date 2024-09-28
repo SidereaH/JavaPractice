@@ -10,7 +10,7 @@ public class HenFactory {
             case "Moldova":
                 return new MoldovanHen();
             case "Belarus":
-                return new MoldovanHen();
+                return new BelarusianHen();
             default:
                 return null;
         }
