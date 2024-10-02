@@ -35,7 +35,8 @@ public class Main {
                 again = in.nextLine();
             }while (!again.equalsIgnoreCase("да") && !again.equalsIgnoreCase("нет"));
 
-        }while(again.equalsIgnoreCase("да")); ;
+        }while(again.equalsIgnoreCase("да"));
+        
 
 
     }
