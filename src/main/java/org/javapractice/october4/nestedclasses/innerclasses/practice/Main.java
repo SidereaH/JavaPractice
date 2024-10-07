@@ -18,7 +18,8 @@ public class Main {
 
         Pair pairOfNums = new Pair(4,16);
         var nod = pairOfNums.new Nod();
-
+        //
+        
 
     }
 
