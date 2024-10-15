@@ -1,5 +1,6 @@
 package org.javapractice.oct10.practice.task2;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Matrix {
@@ -43,9 +44,11 @@ public class Matrix {
 
     public void getMaxChetElement() throws NoEvenNumberFoud{
         for (int i = 0; i < matrix.length; i++) {
-            pobDial[i] = matrix[i][i];
+            pobDial[i] = matrix[matrix.length - i - 1][i];
         }
         this.maxEl = getMax(pobDial);
+        System.out.println("diagonal"+Arrays.toString(pobDial));
+        System.out.println(Arrays.deepToString(matrix));
     }
     private int getMax(int[] arr) throws NoEvenNumberFoud{
         int max = (int) Double.NEGATIVE_INFINITY;
