@@ -1,5 +1,4 @@
 package org.javapractice.oct15.kt.animalseasy;
-
 import org.javapractice.oct15.kt.animalseasy.exceptions.StringDoNotContainsNumbersException;
 import org.javapractice.oct15.kt.animalseasy.exceptions.StringIsEmptyException;
 import org.javapractice.oct15.kt.animalseasy.Animal.Type;
