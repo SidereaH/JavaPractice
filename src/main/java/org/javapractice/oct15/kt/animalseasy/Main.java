@@ -2,11 +2,14 @@ package org.javapractice.oct15.kt.animalseasy;
 import org.javapractice.oct15.kt.animalseasy.exceptions.StringDoNotContainsNumbersException;
 import org.javapractice.oct15.kt.animalseasy.exceptions.StringIsEmptyException;
 import org.javapractice.oct15.kt.animalseasy.Animal.Type;
+
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
+
     public static void main(String[] args) {
         System.out.println("Animaaals!!! Task 1 (Easy)");
         var cat = new Cat(12, "Murzi");
@@ -21,7 +24,9 @@ public class Main {
             animal.makeSound();
         }
 
-
+        Animal daun = new Dog("Nikitka", 30);
+        animals.add(daun);
+        System.out.println(Arrays.toString(animals.getArray()));
         var in = new Scanner(System.in);
         boolean isContinue = true;
         Animal animal = null;
@@ -42,6 +47,7 @@ public class Main {
                 }
                 if (num.equals("1")) {
                     animal = new Cat();
+
                 }
                 else if (num.equals("2")) {
                     animal = new Dog();
@@ -102,6 +108,7 @@ public class Main {
                     else if (ag.equals("0")){
                         throw new NullPointerException();
                     }
+
                 } catch (StringIsEmptyException e){
                     System.out.println(e.getMessage());
                     continue;
@@ -114,7 +121,12 @@ public class Main {
                     System.out.println("Age can`t be 0");
                     continue;
                 }
+
                 age = Integer.parseInt(ag);
+                if(age >100){
+                    System.out.println("Age cant be more than 100");
+                    continue;
+                }
                 break;
             }
             animal.setName(animalName);
@@ -137,8 +149,13 @@ public class Main {
                 break;
             }
         }
-        for(Animal bro : animals.getArray()){
-            bro.makeSound();
+        for(Animal bro : animals.getArray()) {
+            try{
+                bro.makeSound();
+            }
+            catch (NullPointerException e){
+                continue;
+            }
         }
     }
     public static boolean checkForNum(String integer) {

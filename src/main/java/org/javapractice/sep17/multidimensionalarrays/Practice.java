@@ -6,6 +6,7 @@ import java.util.*;
 public class Practice {
     public static int N;
     public static void main(String[] args) {
+
         System.out.println("First task");
         int[] nechetarr = new int[10];
         int count = 1;
